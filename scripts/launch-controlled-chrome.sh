@@ -4,11 +4,19 @@ set -euo pipefail
 PORT="${UPWORK_AUTOPILOT_PORT:-9225}"
 START_URL="${UPWORK_AUTOPILOT_START_URL:-https://www.upwork.com/nx/find-work/best-matches}"
 CHROME_APP="${UPWORK_AUTOPILOT_CHROME_APP:-Google Chrome}"
-CHROME_MODE="${UPWORK_AUTOPILOT_CHROME_MODE:-isolated}"
+CHROME_MODE="${UPWORK_AUTOPILOT_CHROME_MODE:-system-profile}"
 ISOLATED_PROFILE_DIR="${UPWORK_AUTOPILOT_PROFILE_DIR:-$HOME/.codex/upwork-autopilot/chrome-profile}"
 SYSTEM_USER_DATA_DIR="${UPWORK_AUTOPILOT_SYSTEM_USER_DATA_DIR:-$HOME/Library/Application Support/Google/Chrome}"
 SYSTEM_PROFILE_DIRECTORY="${UPWORK_AUTOPILOT_SYSTEM_PROFILE_DIRECTORY:-Default}"
-CLOSE_EXISTING_CHROME="${UPWORK_AUTOPILOT_CLOSE_EXISTING_CHROME:-0}"
+CLOSE_EXISTING_CHROME="${UPWORK_AUTOPILOT_CLOSE_EXISTING_CHROME:-}"
+
+if [[ -z "${CLOSE_EXISTING_CHROME}" ]]; then
+  if [[ "${CHROME_MODE}" == "system-profile" ]]; then
+    CLOSE_EXISTING_CHROME="1"
+  else
+    CLOSE_EXISTING_CHROME="0"
+  fi
+fi
 
 chrome_running() {
   osascript -e "application \"${CHROME_APP}\" is running" 2>/dev/null | grep -qi '^true$'

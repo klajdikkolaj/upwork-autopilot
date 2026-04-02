@@ -29,8 +29,8 @@ Use this skill for real Upwork application work. Prefer the Chrome CDP path. Onl
 
 1. Run `../../scripts/bootstrap.sh` once from the plugin root.
 2. Ensure the applicant profile exists. If it does not, run `node ../../scripts/setup-applicant-profile.mjs`.
-2. If the user wants to reuse their real logged-in Chrome cookies, run `../../scripts/launch-logged-in-chrome.sh`.
-3. Otherwise run `../../scripts/launch-controlled-chrome.sh` for a fully isolated browser profile.
+2. Run `../../scripts/launch-controlled-chrome.sh` by default to reuse the user's normal logged-in Chrome profile.
+3. If the user explicitly wants a clean browser state, run `../../scripts/launch-isolated-chrome.sh` instead.
 4. Ask the user to log into Upwork only if the chosen browser mode is not already signed in.
 5. Run `node ../../scripts/upwork-session-probe.mjs` to confirm login state.
 6. Export a log path before submissions, for example:

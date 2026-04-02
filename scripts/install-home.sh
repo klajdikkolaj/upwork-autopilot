@@ -98,8 +98,8 @@ echo "Installed upwork-autopilot to ${TARGET_PLUGIN_DIR}"
 echo "Marketplace: ${MARKETPLACE_PATH}"
 echo "Next steps:"
 echo "1. Run node scripts/setup-applicant-profile.mjs"
-echo "2. Run bash scripts/launch-logged-in-chrome.sh to reuse your normal Chrome login"
-echo "3. Or run bash scripts/launch-controlled-chrome.sh for an isolated browser profile"
+echo "2. Run bash scripts/launch-controlled-chrome.sh to reuse your normal Chrome login"
+echo "3. Or run bash scripts/launch-isolated-chrome.sh for an isolated browser profile"
 
 if [[ ! -f "${TARGET_PLUGIN_DIR}/config/applicant-profile.local.md" && -t 0 && -t 1 ]]; then
   printf "No local applicant profile found. Run setup wizard now? [Y/n]: "

@@ -44,23 +44,25 @@ skills/
 cd /path/to/upwork-autopilot
 bash scripts/bootstrap.sh
 node scripts/setup-applicant-profile.mjs
-bash scripts/launch-logged-in-chrome.sh
+bash scripts/launch-controlled-chrome.sh
 node scripts/upwork-session-probe.mjs
+```
+
+By default, `launch-controlled-chrome.sh` now reuses the machine's normal logged-in Chrome profile.
+
+If you want an explicit logged-in-profile launch, use:
+
+```bash
+bash scripts/launch-logged-in-chrome.sh
 ```
 
 If you want a fully isolated browser profile, use:
 
 ```bash
-bash scripts/launch-controlled-chrome.sh
+bash scripts/launch-isolated-chrome.sh
 ```
 
-If you want to reuse your normal logged-in Chrome profile, use:
-
-```bash
-bash scripts/launch-logged-in-chrome.sh
-```
-
-That relaunches Chrome with your existing user profile and CDP enabled, so saved Upwork cookies remain available to the automation.
+The default and logged-in launchers relaunch Chrome with the machine's existing user profile and CDP enabled, so saved Upwork cookies remain available to the automation.
 
 Important:
 
@@ -87,7 +89,8 @@ node scripts/upwork-search-inspect.mjs 'AI integration developer LLM automation'
 node scripts/upwork-search-inspect.mjs 'AI integration developer LLM automation' detail 0
 node scripts/upwork-apply-probe.mjs '<job-url>'
 node scripts/upwork-submit-proposal.mjs '<proposal-url>' /abs/path/to/payload.json
-bash scripts/launch-logged-in-chrome.sh
+bash scripts/launch-controlled-chrome.sh
+bash scripts/launch-isolated-chrome.sh
 bash scripts/validate.sh
 bash scripts/package-release.sh
 bash scripts/export-github-repo.sh
