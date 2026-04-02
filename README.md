@@ -4,7 +4,7 @@ Codex plugin for controlled Upwork job search, qualification, and proposal submi
 
 ## What it does
 
-- launches a dedicated Chrome profile with CDP enabled
+- launches either an isolated Chrome profile or your normal logged-in Chrome profile with CDP enabled
 - asks each user for their own applicant profile and search defaults
 - probes whether the live Upwork session is logged in
 - searches filtered Upwork job results
@@ -44,8 +44,38 @@ skills/
 cd /path/to/upwork-autopilot
 bash scripts/bootstrap.sh
 node scripts/setup-applicant-profile.mjs
-bash scripts/launch-controlled-chrome.sh
+bash scripts/launch-logged-in-chrome.sh
 node scripts/upwork-session-probe.mjs
+```
+
+If you want a fully isolated browser profile, use:
+
+```bash
+bash scripts/launch-controlled-chrome.sh
+```
+
+If you want to reuse your normal logged-in Chrome profile, use:
+
+```bash
+bash scripts/launch-logged-in-chrome.sh
+```
+
+That relaunches Chrome with your existing user profile and CDP enabled, so saved Upwork cookies remain available to the automation.
+
+Important:
+
+- the plugin does not ship, copy, or transfer Chrome cookies or Upwork credentials
+- each user must already be signed into Upwork in their own local Chrome profile
+- the logged-in mode only reuses credentials that already exist on that machine
+- Chrome may need to close and relaunch once so CDP can attach to the real profile
+
+Useful environment variables:
+
+```bash
+UPWORK_AUTOPILOT_CHROME_MODE=system-profile
+UPWORK_AUTOPILOT_SYSTEM_PROFILE_DIRECTORY=Default
+UPWORK_AUTOPILOT_CLOSE_EXISTING_CHROME=1
+UPWORK_AUTOPILOT_PORT=9225
 ```
 
 ## Main commands
@@ -57,6 +87,7 @@ node scripts/upwork-search-inspect.mjs 'AI integration developer LLM automation'
 node scripts/upwork-search-inspect.mjs 'AI integration developer LLM automation' detail 0
 node scripts/upwork-apply-probe.mjs '<job-url>'
 node scripts/upwork-submit-proposal.mjs '<proposal-url>' /abs/path/to/payload.json
+bash scripts/launch-logged-in-chrome.sh
 bash scripts/validate.sh
 bash scripts/package-release.sh
 bash scripts/export-github-repo.sh

@@ -3,10 +3,41 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+NPM_BIN="${NPM_BIN:-}"
+NODE_BIN="${NODE_BIN:-}"
 
 TARGET_ROOT="${UPWORK_AUTOPILOT_HOME_ROOT:-$HOME}"
 TARGET_PLUGIN_DIR="${TARGET_ROOT}/plugins/upwork-autopilot"
 MARKETPLACE_PATH="${TARGET_ROOT}/.agents/plugins/marketplace.json"
+
+if [[ -z "${NPM_BIN}" ]]; then
+  NPM_BIN="$(command -v npm || true)"
+fi
+
+if [[ -z "${NPM_BIN}" && -x /opt/homebrew/bin/npm ]]; then
+  NPM_BIN="/opt/homebrew/bin/npm"
+fi
+
+if [[ -z "${NPM_BIN}" ]]; then
+  echo "Home installation requires npm on PATH." >&2
+  exit 1
+fi
+
+if [[ -z "${NODE_BIN}" ]]; then
+  NODE_BIN="$(command -v node || true)"
+fi
+
+if [[ -z "${NODE_BIN}" && -x /opt/homebrew/bin/node ]]; then
+  NODE_BIN="/opt/homebrew/bin/node"
+fi
+
+if [[ -z "${NODE_BIN}" ]]; then
+  NODE_BIN="$("${NPM_BIN}" exec -- node -p 'process.execPath')"
+fi
+
+if [[ -n "${NODE_BIN}" ]]; then
+  export PATH="$(dirname "${NODE_BIN}"):${PATH}"
+fi
 
 mkdir -p "${TARGET_ROOT}/plugins" "$(dirname "${MARKETPLACE_PATH}")"
 
@@ -60,14 +91,15 @@ PY
 
 (
   cd "${TARGET_PLUGIN_DIR}"
-  npm install
+  "${NPM_BIN}" install
 )
 
 echo "Installed upwork-autopilot to ${TARGET_PLUGIN_DIR}"
 echo "Marketplace: ${MARKETPLACE_PATH}"
 echo "Next steps:"
 echo "1. Run node scripts/setup-applicant-profile.mjs"
-echo "2. Run bash scripts/launch-controlled-chrome.sh"
+echo "2. Run bash scripts/launch-logged-in-chrome.sh to reuse your normal Chrome login"
+echo "3. Or run bash scripts/launch-controlled-chrome.sh for an isolated browser profile"
 
 if [[ ! -f "${TARGET_PLUGIN_DIR}/config/applicant-profile.local.md" && -t 0 && -t 1 ]]; then
   printf "No local applicant profile found. Run setup wizard now? [Y/n]: "
@@ -76,7 +108,7 @@ if [[ ! -f "${TARGET_PLUGIN_DIR}/config/applicant-profile.local.md" && -t 0 && -
   if [[ "${answer}" =~ ^([Yy]|[Yy][Ee][Ss])$ ]]; then
     (
       cd "${TARGET_PLUGIN_DIR}"
-      node scripts/setup-applicant-profile.mjs
+      "${NODE_BIN}" scripts/setup-applicant-profile.mjs
     )
   fi
 fi

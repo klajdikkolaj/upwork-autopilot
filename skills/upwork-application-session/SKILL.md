@@ -1,11 +1,11 @@
 ---
 name: upwork-application-session
-description: Use when the user wants to search Upwork, qualify roles, draft proposals, submit applications, or continue an active Upwork application session. This skill uses a dedicated Chrome CDP workflow, payload JSON files, sequential browser actions, connect-budget tracking, and final success confirmation through Upwork proposal URLs.
+description: Use when the user wants to search Upwork, qualify roles, draft proposals, submit applications, or continue an active Upwork application session. This skill uses a Chrome CDP workflow, payload JSON files, sequential browser actions, connect-budget tracking, and final success confirmation through Upwork proposal URLs.
 ---
 
 # Upwork Application Session
 
-Use this skill for real Upwork application work. Prefer the dedicated Chrome CDP path. Only use Atlas if JavaScript execution is confirmed to work there.
+Use this skill for real Upwork application work. Prefer the Chrome CDP path. Only use Atlas if JavaScript execution is confirmed to work there.
 
 ## Read first
 
@@ -29,10 +29,11 @@ Use this skill for real Upwork application work. Prefer the dedicated Chrome CDP
 
 1. Run `../../scripts/bootstrap.sh` once from the plugin root.
 2. Ensure the applicant profile exists. If it does not, run `node ../../scripts/setup-applicant-profile.mjs`.
-2. Run `../../scripts/launch-controlled-chrome.sh`.
-3. Ask the user to log into Upwork in that Chrome window if needed.
-4. Run `node ../../scripts/upwork-session-probe.mjs` to confirm login state.
-5. Export a log path before submissions, for example:
+2. If the user wants to reuse their real logged-in Chrome cookies, run `../../scripts/launch-logged-in-chrome.sh`.
+3. Otherwise run `../../scripts/launch-controlled-chrome.sh` for a fully isolated browser profile.
+4. Ask the user to log into Upwork only if the chosen browser mode is not already signed in.
+5. Run `node ../../scripts/upwork-session-probe.mjs` to confirm login state.
+6. Export a log path before submissions, for example:
 
 ```bash
 export UPWORK_AUTOPILOT_LOG=$HOME/.codex/upwork-autopilot/logs/$(date +%F).jsonl
