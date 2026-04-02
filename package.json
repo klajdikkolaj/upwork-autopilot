@@ -1,0 +1,30 @@
+{
+  "name": "upwork-autopilot",
+  "private": false,
+  "version": "0.4.0",
+  "type": "module",
+  "scripts": {
+    "bootstrap": "npm install",
+    "probe": "node ./scripts/upwork-session-probe.mjs",
+    "setup:profile": "node ./scripts/setup-applicant-profile.mjs",
+    "search:plan": "node ./scripts/upwork-search-plan.mjs",
+    "install:home": "bash ./scripts/install-home.sh",
+    "package:release": "bash ./scripts/package-release.sh",
+    "export:github": "bash ./scripts/export-github-repo.sh",
+    "validate": "bash ./scripts/validate.sh"
+  },
+  "homepage": "https://github.com/klajdikkolaj/upwork-autopilot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klajdikkolaj/upwork-autopilot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/klajdikkolaj/upwork-autopilot/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright-core": "^1.54.2"
+  }
+}

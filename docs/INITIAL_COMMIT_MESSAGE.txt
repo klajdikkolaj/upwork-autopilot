@@ -1,0 +1,6 @@
+Initial public release of Upwork Autopilot
+
+- add Codex plugin manifest and Upwork application session skill
+- add guided applicant-profile onboarding and search configuration
+- add Chrome CDP scripts for Upwork session probing, search inspection, and proposal submission
+- add installation, validation, packaging, and GitHub export workflows

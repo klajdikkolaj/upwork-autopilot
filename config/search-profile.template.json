@@ -1,0 +1,28 @@
+{
+  "keywords": [
+    "Next.js React senior developer TypeScript fullstack",
+    "AI agent developer Claude API OpenAI LLM",
+    "n8n automation workflow AI agent",
+    "NestJS Node.js backend API developer",
+    "Go golang microservices backend developer",
+    "Supabase PostgreSQL fullstack developer",
+    "AI integration developer LLM automation",
+    "fullstack developer React Node AI startup"
+  ],
+  "filters": {
+    "contractorTier": 3,
+    "hourlyRateMin": 35,
+    "paymentVerified": true,
+    "proposalsMax": 4
+  },
+  "thresholds": {
+    "hourlyFloor": 40,
+    "fixedPriceMin": 5000,
+    "stopWhenConnectsBelow": 15
+  },
+  "skipRules": {
+    "hardGeoRestrictions": true,
+    "videoOnlyApplications": true,
+    "citizenshipOrClearanceLocks": true
+  }
+}
