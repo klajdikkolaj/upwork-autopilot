@@ -119,6 +119,19 @@ async function main() {
       existingProfile?.['Why it proves fit'],
       false,
     ),
+    relevantProjectExamples: await ask(
+      rl,
+      'Relevant project examples or proof bank',
+      existingProfile?.['Relevant project examples'],
+      false,
+    ),
+    missingInfoRule: await ask(
+      rl,
+      'When to stop and ask for missing proof',
+      existingProfile?.['Missing-info rule'] ||
+        'If the client asks for facts, metrics, case studies, URLs, or domain history not covered here, stop and ask me before submitting.',
+      false,
+    ),
     hourlyMinimum: await ask(
       rl,
       'Hourly minimum (example: $40/hr)',
@@ -142,7 +155,7 @@ async function main() {
     preferredTone: await ask(
       rl,
       'Preferred proposal tone',
-      existingProfile?.['Preferred tone'] || 'friendly and professional',
+      existingProfile?.['Preferred tone'] || 'friendly, specific, conversational, human',
       true,
     ),
     requiredOpening: await ask(
@@ -161,6 +174,19 @@ async function main() {
       rl,
       'Topics to avoid',
       existingProfile?.['Topics to avoid'],
+      false,
+    ),
+    differentiatorsToMention: await ask(
+      rl,
+      'Differentiators to mention when relevant',
+      existingProfile?.['Differentiators to mention when relevant'],
+      false,
+    ),
+    preferredClosingCTA: await ask(
+      rl,
+      'Preferred closing CTA',
+      existingProfile?.['Preferred closing CTA'] ||
+        'I’d be happy to jump on a call whenever you want to talk this through.',
       false,
     ),
     otherNotes: await ask(
@@ -393,6 +419,11 @@ function renderApplicantProfile(profile) {
 - Project: ${profile.flagshipProject}
 - Why it proves fit: ${profile.flagshipWhy}
 
+## Evidence bank
+
+- Relevant project examples: ${profile.relevantProjectExamples}
+- Missing-info rule: ${profile.missingInfoRule}
+
 ## Rate and engagement floor
 
 - Hourly minimum: ${profile.hourlyMinimum}
@@ -405,6 +436,8 @@ function renderApplicantProfile(profile) {
 - Required opening: ${profile.requiredOpening}
 - Topics to emphasize: ${profile.topicsToEmphasize}
 - Topics to avoid: ${profile.topicsToAvoid}
+- Differentiators to mention when relevant: ${profile.differentiatorsToMention}
+- Preferred closing CTA: ${profile.preferredClosingCTA}
 
 ## Compliance rules
 

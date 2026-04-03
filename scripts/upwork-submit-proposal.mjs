@@ -61,7 +61,9 @@ for (let i = 0; i < textareas.length; i += 1) {
 }
 
 const beforeUrl = page.url();
-await page.getByRole('button', { name: /submit a proposal/i }).click({ timeout: 20000 });
+await page
+  .getByRole('button', { name: /submit a proposal|send for \d+ connects|send proposal/i })
+  .click({ timeout: 20000 });
 await page.waitForTimeout(3000);
 await page.waitForURL((url) => /\?success\b/.test(url.toString()), { timeout: 60000 }).catch(() => {});
 

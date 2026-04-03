@@ -33,6 +33,11 @@ Copy this file to `config/applicant-profile.local.md` and fill it with the actua
 - Project:
 - Why it proves fit:
 
+## Evidence bank
+
+- Relevant project examples:
+- Missing-info rule:
+
 ## Rate and engagement floor
 
 - Hourly minimum:
@@ -45,6 +50,8 @@ Copy this file to `config/applicant-profile.local.md` and fill it with the actua
 - Required opening:
 - Topics to emphasize:
 - Topics to avoid:
+- Differentiators to mention when relevant:
+- Preferred closing CTA:
 
 ## Compliance rules
 
