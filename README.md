@@ -2,6 +2,8 @@
 
 Codex plugin for controlled Upwork job search, qualification, and proposal submission sessions.
 
+[![Upwork Autopilot on HOL Registry (Trust Score)](https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dklajdikkolaj%252Fupwork-autopilot%26metric%3Dtrust%26style%3Dfor-the-badge%26label%3DUpwork+Autopilot)](https://hol.org/registry/plugins/klajdikkolaj%2Fupwork-autopilot)
+
 ## What it does
 
 - launches either an isolated Chrome profile or your normal logged-in Chrome profile with CDP enabled
