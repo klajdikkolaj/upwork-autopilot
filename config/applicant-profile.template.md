@@ -47,6 +47,7 @@ Copy this file to `config/applicant-profile.local.md` and fill it with the actua
 ## Proposal rules
 
 - Preferred tone:
+- Preferred structure:
 - Required opening:
 - Topics to emphasize:
 - Topics to avoid:

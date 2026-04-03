@@ -90,16 +90,20 @@ Create a payload JSON file with `apply_patch`. The scripts fill fields in DOM or
 Rules:
 
 - Before drafting, extract the actual deliverable, stack, client pain point, any written questions, and any request for examples or proof.
-- First paragraph: name the actual problem in the post in plain language within the first 2 sentences.
-- Middle section: 2 to 4 bullets that map profile strengths to the job.
+- First paragraph: open casually and directly, and name the actual problem or fit in plain language within the first 2 sentences.
+- Default structure: 3 to 5 short paragraphs in natural prose, not a bullet-heavy sales pitch.
+- Weave relevant experience into the paragraphs instead of defaulting to bullets.
+- Use bullets only when the client explicitly asks for list-style answers or when multiple written questions are easier to answer that way.
 - Proof section: use relevant project evidence from the profile only when it actually matches the post.
+- When the applicant profile includes named project examples, prefer dropping 1 to 3 of the strongest ones naturally into the prose instead of listing every example.
 - If the applicant profile includes `Differentiators to mention when relevant`, use at most 1 or 2 that genuinely strengthen this specific job. Do not force them into unrelated proposals.
 - Closing: use the profile's `Preferred closing CTA` when present, or a close natural variant of it.
 - If the client asks for project examples, case studies, metrics, URLs, or niche background, answer with the closest truthful match from the profile.
 - If the profile does not contain the proof the client is asking for, stop and ask the user for the missing details before submitting. Do not guess.
 - Keep the proposal usually around `220` to `320` words unless the page asks multiple written questions.
 - Answer written questions directly in field order. Do not dodge them with generic sales copy.
-- Use conversational phrasing and contractions when natural. Avoid templated buzzwords, generic praise, and AI-sounding filler.
+- Use conversational phrasing and contractions when natural. Avoid templated buzzwords, generic praise, AI-sounding filler, and overly heavy systems language unless the post clearly calls for it.
+- If the applicant profile states tone or structure preferences, follow those over the generic defaults in this file.
 - The first line must begin with `Hi,`
 
 ## Submission
