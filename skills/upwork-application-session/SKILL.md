@@ -10,8 +10,10 @@ Use this skill for real Upwork application work. Prefer the Chrome CDP path. Onl
 ## Read first
 
 - First try `../../config/applicant-profile.local.md`
+- If that file does not exist in the cache copy, fall back to `$HOME/plugins/upwork-autopilot/config/applicant-profile.local.md`
 - If that file does not exist, run `node ../../scripts/setup-applicant-profile.mjs`
 - Then read `../../config/search-profile.local.json` if it exists
+- If that file does not exist in the cache copy, fall back to `$HOME/plugins/upwork-autopilot/config/search-profile.local.json`
 - If the local search profile does not exist, use `../../config/search-profile.template.json`
 - `../../references/search-strategy.md`
 
@@ -19,6 +21,7 @@ Use this skill for real Upwork application work. Prefer the Chrome CDP path. Onl
 
 - Start every cover letter with `Hi,`
 - Tone: friendly, professional, specific, low-fluff.
+- Never invent project examples, metrics, portfolio URLs, or domain history.
 - Never include email, phone, Telegram, WhatsApp, Calendly, or any off-platform contact detail in a proposal.
 - Never attach the CV in this workflow.
 - Do not parallelize browser actions against the live Upwork session.
@@ -69,6 +72,7 @@ Apply only if all of these hold:
 - the rate is compatible with the user's floor
 - there is no hard location block
 - the role is not already applied
+- any requested proof, portfolio examples, or niche experience can be answered honestly from the profile or current context
 
 ## Proposal writing
 
@@ -85,12 +89,17 @@ Create a payload JSON file with `apply_patch`. The scripts fill fields in DOM or
 
 Rules:
 
-- First paragraph: name the actual problem in the post.
+- Before drafting, extract the actual deliverable, stack, client pain point, any written questions, and any request for examples or proof.
+- First paragraph: name the actual problem in the post in plain language within the first 2 sentences.
 - Middle section: 2 to 4 bullets that map profile strengths to the job.
-- Proof section: use current work or Eternia only when relevant.
-- Closing: one short call to action.
-- Keep the proposal around `350` to `400` words unless the page asks multiple written questions.
-- Answer written questions directly. Do not dodge them with generic sales copy.
+- Proof section: use relevant project evidence from the profile only when it actually matches the post.
+- If the applicant profile includes `Differentiators to mention when relevant`, use at most 1 or 2 that genuinely strengthen this specific job. Do not force them into unrelated proposals.
+- Closing: use the profile's `Preferred closing CTA` when present, or a close natural variant of it.
+- If the client asks for project examples, case studies, metrics, URLs, or niche background, answer with the closest truthful match from the profile.
+- If the profile does not contain the proof the client is asking for, stop and ask the user for the missing details before submitting. Do not guess.
+- Keep the proposal usually around `220` to `320` words unless the page asks multiple written questions.
+- Answer written questions directly in field order. Do not dodge them with generic sales copy.
+- Use conversational phrasing and contractions when natural. Avoid templated buzzwords, generic praise, and AI-sounding filler.
 - The first line must begin with `Hi,`
 
 ## Submission
@@ -115,5 +124,6 @@ The submit script:
 
 - If the page opens a video interview flow, skip unless the user explicitly wants that path.
 - If the apply button is disabled, read the probe output before deciding whether to skip.
+- If the form asks for required information that is missing from the profile, stop and ask the user before submitting.
 - If `net::ERR_ABORTED` appears, another command touched the same Upwork tab. Resume with single-threaded browser actions only.
 - If login, CAPTCHA, or 2FA appears, hand control to the user and resume after confirmation.

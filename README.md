@@ -38,6 +38,8 @@ skills/
 
 `config/*.local.*` files are private user data and are ignored by git and excluded from release archives.
 
+The applicant profile is intentionally user-specific. Proposal tone, differentiators, proof points, and closing CTA should be customized per applicant rather than hardcoded into the plugin.
+
 ## Quick start
 
 ```bash
