@@ -158,6 +158,13 @@ async function main() {
       existingProfile?.['Preferred tone'] || 'friendly, specific, conversational, human',
       true,
     ),
+    preferredStructure: await ask(
+      rl,
+      'Preferred proposal structure',
+      existingProfile?.['Preferred structure'] ||
+        'short casual paragraphs, no bullet-heavy proposals unless the client asks for list-style answers',
+      false,
+    ),
     requiredOpening: await ask(
       rl,
       'Required opening',
@@ -433,6 +440,7 @@ function renderApplicantProfile(profile) {
 ## Proposal rules
 
 - Preferred tone: ${profile.preferredTone}
+- Preferred structure: ${profile.preferredStructure}
 - Required opening: ${profile.requiredOpening}
 - Topics to emphasize: ${profile.topicsToEmphasize}
 - Topics to avoid: ${profile.topicsToAvoid}
