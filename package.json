@@ -18,7 +18,7 @@
     "validate": "bash ./scripts/validate.sh"
   },
   "bin": {
-    "upwork-autopilot": "./bin/upwork-autopilot.mjs"
+    "upwork-autopilot": "bin/upwork-autopilot.mjs"
   },
   "files": [
     ".codex-plugin/",
