@@ -2,6 +2,9 @@
 
 ## 0.4.0
 
+- added a global `upwork-autopilot` npm CLI
+- added npm package allowlisting so release tarballs exclude private and runtime files
+- added a Homebrew formula and formula refresh/check workflow
 - added a GitHub-ready export workflow for a standalone public repo
 - added validation and packaging scripts suitable for CI
 - added publishing docs, contribution guide, and initial commit message template
