@@ -5,7 +5,7 @@ class UpworkAutopilot < Formula
   desc "Codex plugin for controlled Upwork application sessions"
   homepage "https://github.com/klajdikkolaj/upwork-autopilot"
   url "https://registry.npmjs.org/upwork-autopilot/-/upwork-autopilot-0.4.0.tgz"
-  sha256 "82677826053765c53dedea71696f14db47723e97fc0092943cde690e177651a3"
+  sha256 "4600b4b141552d89631ecce1c35a4ce1f0c6d55a001dd9524301d8b010576612"
   license "MIT"
 
   depends_on "node"

@@ -39,6 +39,7 @@ npm ci
 npm run brew:formula
 npm run validate
 npm publish
+npm run brew:formula
 ```
 
 After `npm publish`, users can install with:
@@ -58,7 +59,7 @@ Refresh the formula after every package version or package-content change:
 npm run brew:formula
 ```
 
-That command builds the npm tarball under `dist/npm/`, calculates its SHA-256, and rewrites the formula. Validation fails if the formula is stale.
+That command builds the npm tarball under `dist/npm/`, calculates its SHA-256, and rewrites the formula. If the exact package version is already on npm, it uses the registry tarball so Homebrew matches what users will install. Validation fails if the formula is stale.
 
 Users can install from this repository as a tap:
 

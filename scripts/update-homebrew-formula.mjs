@@ -23,10 +23,35 @@ function rubyString(value) {
   return JSON.stringify(value);
 }
 
+function publishedVersionExists() {
+  const result = spawnSync(npmBin, ['view', `${packageJson.name}@${packageJson.version}`, 'version', '--json'], {
+    cwd: pluginRoot,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'ignore'],
+  });
+
+  if (result.status !== 0) {
+    return false;
+  }
+
+  try {
+    return JSON.parse(result.stdout) === packageJson.version;
+  } catch {
+    return result.stdout.trim().replace(/^"|"$/g, '') === packageJson.version;
+  }
+}
+
 function runNpmPack() {
   fs.mkdirSync(packDir, { recursive: true });
 
-  const result = spawnSync(npmBin, ['pack', '--json', '--pack-destination', packDir], {
+  const packTarget = publishedVersionExists() ? `${packageJson.name}@${packageJson.version}` : null;
+  const packArgs = ['pack'];
+  if (packTarget) {
+    packArgs.push(packTarget);
+  }
+  packArgs.push('--json', '--pack-destination', packDir);
+
+  const result = spawnSync(npmBin, packArgs, {
     cwd: pluginRoot,
     encoding: 'utf8',
     stdio: ['ignore', 'pipe', 'inherit'],
