@@ -44,6 +44,27 @@ The applicant profile is intentionally user-specific. Proposal tone, differentia
 
 ## Quick start
 
+Install with npm:
+
+```bash
+npm install -g upwork-autopilot
+upwork-autopilot install-home
+upwork-autopilot setup-profile
+upwork-autopilot launch
+upwork-autopilot probe
+```
+
+Install with Homebrew:
+
+```bash
+brew tap klajdikkolaj/upwork-autopilot https://github.com/klajdikkolaj/upwork-autopilot
+brew install klajdikkolaj/upwork-autopilot/upwork-autopilot
+upwork-autopilot install-home
+upwork-autopilot setup-profile
+```
+
+Install from a local checkout:
+
 ```bash
 cd /path/to/upwork-autopilot
 bash scripts/bootstrap.sh
@@ -87,6 +108,16 @@ UPWORK_AUTOPILOT_PORT=9225
 ## Main commands
 
 ```bash
+upwork-autopilot setup-profile
+upwork-autopilot search-plan
+upwork-autopilot search-inspect 'AI integration developer LLM automation'
+upwork-autopilot search-inspect 'AI integration developer LLM automation' detail 0
+upwork-autopilot apply-probe '<job-url>'
+upwork-autopilot submit-proposal '<proposal-url>' /abs/path/to/payload.json
+upwork-autopilot launch
+upwork-autopilot launch-isolated
+upwork-autopilot validate
+
 node scripts/setup-applicant-profile.mjs
 node scripts/upwork-search-plan.mjs
 node scripts/upwork-search-inspect.mjs 'AI integration developer LLM automation'
@@ -100,9 +131,13 @@ bash scripts/package-release.sh
 bash scripts/export-github-repo.sh
 ```
 
+Run `upwork-autopilot --help` for the full installed command list.
+
 ## Install for personal use
 
 ```bash
+upwork-autopilot install-home
+# or, from a checkout:
 bash scripts/install-home.sh
 ```
 

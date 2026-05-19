@@ -28,6 +28,46 @@ bash scripts/package-release.sh
 
 This writes a zip archive to `dist/`.
 
+## npm package
+
+The package exposes the `upwork-autopilot` CLI through `bin/upwork-autopilot.mjs`.
+
+Before publishing:
+
+```bash
+npm ci
+npm run brew:formula
+npm run validate
+npm publish
+```
+
+After `npm publish`, users can install with:
+
+```bash
+npm install -g upwork-autopilot
+upwork-autopilot install-home
+```
+
+## Homebrew formula
+
+The Homebrew formula in `Formula/upwork-autopilot.rb` installs from the npm registry tarball, so publish the matching npm version before announcing the brew install path.
+
+Refresh the formula after every package version or package-content change:
+
+```bash
+npm run brew:formula
+```
+
+That command builds the npm tarball under `dist/npm/`, calculates its SHA-256, and rewrites the formula. Validation fails if the formula is stale.
+
+Users can install from this repository as a tap:
+
+```bash
+brew tap klajdikkolaj/upwork-autopilot https://github.com/klajdikkolaj/upwork-autopilot
+brew install klajdikkolaj/upwork-autopilot/upwork-autopilot
+upwork-autopilot install-home
+```
+
 ## Recommended GitHub settings
 
 - enable Actions so `.github/workflows/validate.yml` runs on pushes and PRs
