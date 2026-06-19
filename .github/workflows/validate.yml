@@ -25,7 +25,7 @@ jobs:
         run: npm ci
 
       - name: Codex plugin quality gate
-        uses: hashgraph-online/hol-codex-plugin-scanner-action@b45d6b583afe05819b24edc8e6418c9ad2e1f1d0 # v1.2.0
+        uses: hashgraph-online/hol-codex-plugin-scanner-action@abfa804eceaef9672249370f80b0c439a5f529c2 # v1.2.242
         with:
           plugin_dir: "."
           fail_on_severity: high
